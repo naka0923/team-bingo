@@ -1,0 +1,127 @@
+.deck-maker {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+  background: #1b1b1b;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.deck-preview {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: repeat(5, 60px);
+  gap: 6px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.deck-cell {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #555;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.deck-cell:hover {
+  border-color: #00bfff;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50px);
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.character-icon {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.character-icon:hover {
+  border-color: #00bfff;
+  transform: scale(1.05);
+}
+
+.deck-save {
+  margin-top: 20px;
+}
+
+.deck-save input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #111;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.deck-save button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #00bfff;
+  color: white;
+  cursor: pointer;
+}
+
+.deck-save button:hover {
+  background: #009fe2;
+}
+
+.deck-list {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.deck-list-item {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.deck-code-preview {
+  font-size: 11px;
+  color: #888;
+  word-break: break-all;
+  margin-top: 4px;
+}
+
+.deck-list-actions button {
+  margin-left: 6px;
+  background: #333;
+  border: none;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deck-list-actions button:hover {
+  background: #555;
+}

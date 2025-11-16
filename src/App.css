@@ -1,0 +1,249 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    flex-direction: column;
+    gap: 0px;
+    padding: 0 10px;
+  }
+}
+.cards-container {
+  margin-bottom: 10px; /* 下のマージンを減らす */
+}
+
+.team-division-container {
+  margin-top: 10px; /* 上のマージンを減らす */
+}
+
+.App-footer {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #5c5c5c; /* 軽い灰色の背景 */
+  color: #ccc; /* 文字色 */
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  margin-top: 30px;
+}
+
+.App-header {
+  width: 100%;
+  background-color: #5c5c5c; /* ヘッダーの背景色 */
+  color: #fcfcfc; /* ヘッダー内テキストの色 */
+  padding: 10px 20px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 下部に影を追加 */
+  margin-bottom: 30px;
+
+  box-sizing: border-box; /* パディングとボーダーを幅に含める */
+  overflow-x: hidden;
+}
+
+.header-content {
+  display: flex; /* フレックスボックスを使用 */
+  justify-content: center; /* タイトルとボタンを両端に配置 */
+  align-items: center; /* アイテムを中央揃えに */
+  width: 100%; /* コンテナの幅を最大に */
+  text-align: center;
+}
+
+.App-header h1 {
+  font-size: 32px; /* デフォルトのフォントサイズ */
+  margin: 0;
+  padding: 10px 0; /* 上下のパディング */
+  color: #fcfcfc;
+}
+
+/* メディアクエリを使用してスマホサイズでのスタイルを調整 */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 18px; /* スマートフォンでのフォントサイズを小さくする */
+    padding: 8px 0; /* パディングを少し小さく調整 */
+  }
+}
+
+.App-header button {
+  padding: 5px 10px;
+  background-color: #ea3d25;
+  color: #fcfcfc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+}
+
+.App-header button:hover {
+  background-color: #991f0f;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ea3d25;
+  color: #fcfcfc;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #991f0f;
+}
+
+.bingo-card-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列のグリッドを作成 */
+  grid-gap: 0px; /* セル間の隙間 */
+  max-width: 500px; /* ビンゴカードの最大幅を設定 */
+  margin: auto; /* 中央揃え */
+}
+
+.hamburger {
+  cursor: pointer;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #fcfcfc;
+  padding: 10px 15px;
+}
+.hamburger:focus-visible {
+  outline: 2px solid #ffffff80;
+  outline-offset: 2px;
+}
+
+/* 半透明の背景（メニューオープン時のみレンダリング） */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+  z-index: 900;
+}
+
+/* メディアクエリを使用してスマホサイズでのスタイルを調整 */
+@media (max-width: 768px) {
+  .hamburger {
+    font-size: 18px; /* フォントサイズを小さく */
+    padding: 8px 12px; /* パディングを少し小さく */
+  }
+}
+
+/* ドロップダウン本体 */
+.nav {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  width: 220px;
+  background: #fcfcfc;
+  color: #353535;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  z-index: 1001;
+
+  /* アニメーション用 */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease,
+    visibility 0s linear 0.18s;
+}
+
+li {
+  padding-right: 10px; /* 各リスト項目の左パディングを追加 */
+}
+
+/* 小さな三角（吹き出しっぽく） */
+.nav::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 18px;
+  width: 10px;
+  height: 10px;
+  background: #fcfcfc;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  transform: rotate(45deg);
+}
+
+/* オープン状態 */
+.nav.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+}
+.nav li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav li + li {
+  margin-top: 4px;
+}
+.nav li:last-child {
+  border-bottom: none;
+}
+
+/* App.css */
+body {
+  background-color: #353535; /* 薄いグレー色を背景に設定 */
+  color: #eaeaea;
+}
+
+/* 行スタイル（大きめタップ領域・角丸ホバー） */
+.nav li a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #353535;
+  text-decoration: none;
+  line-height: 1.3;
+}
+.nav li a:hover,
+.nav li a:focus-visible {
+  background: #f4f6f8;
+}
+
+/* モバイル微調整 */
+@media (max-width: 768px) {
+  .nav {
+    right: 12px;
+    top: 54px;
+    width: 200px;
+  }
+  .hamburger {
+    font-size: 20px;
+    padding: 8px 12px;
+  }
+}

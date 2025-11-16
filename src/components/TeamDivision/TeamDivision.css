@@ -1,0 +1,44 @@
+input[type="text"] {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+  
+
+  /* チームメンバーのスタイル */
+.teams-container {
+  display: flex;
+  justify-content: space-around; /* チーム間のスペースを均等に */
+  flex-wrap: wrap; /* 必要に応じて折り返し */
+}
+
+.team {
+  margin: 10px;
+}
+
+.team-members {
+  margin-top: 5px;
+}
+
+.team-member {
+  margin: 5px 0; /* メンバー間の縦の間隔 */
+}
