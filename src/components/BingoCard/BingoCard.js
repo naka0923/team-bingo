@@ -83,6 +83,7 @@ function BingoCard({ color, initialCode, onCodeChange }) {
   const [selectedImages, setSelectedImages] = useState([]);
   const [clicked, setClicked] = useState(Array(25).fill(false));
   const [includeMiiCharacters, setIncludeMiiCharacters] = useState(true);
+  const [inputCode, setInputCode] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [includeDashFighters, setIncludeDashFighters] = useState(false);
@@ -180,6 +181,17 @@ function BingoCard({ color, initialCode, onCodeChange }) {
     setIsInitialLoad(false);
   };
 
+  const handleLoadDeck = () => {
+    const decodedImages = decodeState(inputCode);
+    if (decodedImages.length === 0) return;
+    setSelectedImages(decodedImages);
+    const next = Array(25).fill(false);
+    next[12] = true;
+    setClicked(next);
+    onCodeChange?.(inputCode);
+    setInputCode("");
+  };
+
   const handleCellClick = (index) => {
     const newClicked = [...clicked];
     newClicked[index] = !newClicked[index];
@@ -267,6 +279,22 @@ function BingoCard({ color, initialCode, onCodeChange }) {
         <button onClick={toggleSettings} style={{ marginTop: "10px" }}>
           ビンゴのカスタマイズ
         </button>
+        <div style={{ display: "flex", gap: "6px", marginTop: "10px" }}>
+          <input
+            type="text"
+            value={inputCode}
+            onChange={(e) => setInputCode(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleLoadDeck()}
+            placeholder="デッキコードを入力"
+            style={{ padding: "6px 8px", borderRadius: "4px", border: "1px solid #666", background: "#4a4a4a", color: "#eaeaea", fontSize: "13px", width: "160px" }}
+          />
+          <button
+            onClick={handleLoadDeck}
+            style={{ marginTop: "0", padding: "6px 10px", fontSize: "13px" }}
+          >
+            ロード
+          </button>
+        </div>
       </div>
 
       {showSettings && (
