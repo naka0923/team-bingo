@@ -71,9 +71,9 @@ function SettingsModal({
   );
 }
 
-function BingoCard2({ color, initialCode, onCodeChange }) {
+function BingoCard3({ color, initialCode, onCodeChange }) {
   const [selectedImages, setSelectedImages] = useState([]);
-  const [clicked, setClicked] = useState(Array(9).fill(false));
+  const [clicked, setClicked] = useState(Array(49).fill(false));
   const [includeMiiCharacters, setIncludeMiiCharacters] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
@@ -87,8 +87,8 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
       const decodedImages = decodeState(initialCode);
       if (decodedImages.length > 0) {
         setSelectedImages(decodedImages);
-        const next = Array(9).fill(false);
-        next[4] = true;
+        const next = Array(49).fill(false);
+        next[24] = true;
         setClicked(next);
         setIsInitialLoad(false);
         return;
@@ -126,11 +126,11 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
       bias = candidates[Math.floor(Math.random() * candidates.length)];
     }
 
-    const picked = fyShuffle(sampleWithoutReplacementWeighted(pool, (img) => weightByTags(img, bias), 9));
+    const picked = fyShuffle(sampleWithoutReplacementWeighted(pool, (img) => weightByTags(img, bias), 49));
     setSelectedImages(picked);
 
-    const initialClicked = Array(9).fill(false);
-    initialClicked[4] = true;
+    const initialClicked = Array(49).fill(false);
+    initialClicked[24] = true;
     setClicked(initialClicked);
 
     setLastAppliedBias(bias);
@@ -156,11 +156,11 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
         トッピング（現在）:{" "}
         {lastAppliedBias?.name ?? (BIASES.find((b) => b.id === biasId)?.name || "なし")}
       </div>
-      <div className={`bingo-card bingo-card-3x3 ${color}`}>
+      <div className={`bingo-card bingo-card-7x7 ${color}`}>
         {selectedImages.map((image, index) => (
           <div
             key={index}
-            className={`bingo-cell bingo-cell-3x3 ${clicked[index] ? "clicked" : ""}`}
+            className={`bingo-cell bingo-cell-7x7 ${clicked[index] ? "clicked" : ""}`}
             onClick={() => handleCellClick(index)}
             style={{ backgroundImage: `url(${image})` }}
           ></div>
@@ -197,4 +197,4 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
   );
 }
 
-export default BingoCard2;
+export default BingoCard3;

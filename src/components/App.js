@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import BingoCard from "./BingoCard/BingoCard";
-import TeamDivision from "./TeamDivision/TeamDivision";
 import Settings from "./BingoCard/Settings";
 import BingoCard2 from "./BingoCard/BingoCard33";
+import BingoCard3 from "./BingoCard/BingoCard77";
+import BingoLayout from "./BingoLayout";
 
 // ★ 追加：デッキメーカー
 import DeckMaker from "./DeckMaker/DeckMaker";
@@ -71,6 +72,11 @@ function App() {
                     チームビンゴ3×3
                   </Link>
                 </li>
+                <li>
+                  <Link to="/bingo3" onClick={toggleMenu}>
+                    チームビンゴ7×7
+                  </Link>
+                </li>
 
                 {/* ★ 追加：デッキメーカーへの導線 */}
                 <li>
@@ -95,31 +101,9 @@ function App() {
         </header>
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <div className="cards-container">
-                  <BingoCard color="red" />
-                  <BingoCard color="blue" />
-                </div>
-                <TeamDivision />
-              </>
-            }
-          />
-
-          <Route
-            path="/bingo2"
-            element={
-              <>
-                <div className="cards-container">
-                  <BingoCard2 color="red" />
-                  <BingoCard2 color="blue" />
-                </div>
-                <TeamDivision />
-              </>
-            }
-          />
+          <Route path="/" element={<BingoLayout CardComponent={BingoCard} />} />
+          <Route path="/bingo2" element={<BingoLayout CardComponent={BingoCard2} />} />
+          <Route path="/bingo3" element={<BingoLayout CardComponent={BingoCard3} />} />
 
           {/* ★ 追加：デッキメーカーのルーティング */}
           <Route path="/deck" element={<DeckMaker />} />

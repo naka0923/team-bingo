@@ -1,44 +1,167 @@
-input[type="text"] {
-    margin: 5px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  h3 {
-    margin-top: 20px;
-  }
-  
-
-  /* チームメンバーのスタイル */
-.teams-container {
+/* BingoLayout */
+.bingo-layout {
   display: flex;
-  justify-content: space-around; /* チーム間のスペースを均等に */
-  flex-wrap: wrap; /* 必要に応じて折り返し */
+  flex-direction: column;
+  align-items: center;
 }
 
-.team {
-  margin: 10px;
+.cards-with-teams {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  flex-wrap: wrap;
 }
 
-.team-members {
-  margin-top: 5px;
+.card-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.team-member {
-  margin: 5px 0; /* メンバー間の縦の間隔 */
+.team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* TeamDivision (旧レイアウト、互換用) */
+.team-division-container {
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.team-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* チーム列 */
+.team-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 130px;
+}
+
+.team-heading {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.team-heading-red {
+  color: #ff3535;
+}
+
+.team-heading-blue {
+  color: #2f88fc;
+}
+
+.team-input {
+  width: 120px;
+  padding: 5px 8px;
+  margin: 3px 0;
+  border-radius: 4px;
+  border: 2px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+  background-color: #4a4a4a;
+  color: #eaeaea;
+  box-sizing: border-box;
+}
+
+.team-input-red {
+  border-color: #ff3535;
+}
+
+.team-input-blue {
+  border-color: #2f88fc;
+}
+
+.team-input:focus {
+  outline: none;
+  background-color: #5a5a5a;
+}
+
+/* 中央の入力エリア */
+.member-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-section-label {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.member-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.member-input {
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 13px;
+  background-color: #4a4a4a;
+  color: #eaeaea;
+  box-sizing: border-box;
+}
+
+.member-input:focus {
+  outline: none;
+  border-color: #aaa;
+  background-color: #5a5a5a;
+}
+
+.td-buttons-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.td-button {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 13px;
+  background-color: #ea3d25;
+  color: #fcfcfc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.td-button:hover {
+  background-color: #991f0f;
+}
+
+.copy-url-button {
+  margin-top: 12px;
+  background-color: #16a34a;
+}
+
+.copy-url-button:hover {
+  background-color: #15803d;
+}
+
+@media (max-width: 600px) {
+  .team-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member-inputs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }

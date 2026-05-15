@@ -26,6 +26,13 @@
   margin: auto; /* カードを中央に配置 */
 }
 
+.bingo-card-7x7 {
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  gap: 0px;
+  margin: auto;
+}
+
 .bingo-cell {
   width: 80px;
   height: 80px;
@@ -34,21 +41,35 @@
   cursor: pointer;
 }
 
+.bingo-cell-7x7 {
+  width: 60px;
+  height: 60px;
+}
+
 @media (max-width: 600px) {
   .bingo-card {
-    grid-template-columns: repeat(
-      5,
-      60px
-    ); /* スマートフォン表示時にセルサイズを60pxに合わせる */
-    padding: 10px; /* パディングを減らして全体が画面内に収まるよう調整 */
-    border: 12px solid #000; /* 枠線の太さを調整して全体のサイズを抑える */
-    margin: 0; /* 必要に応じてマージンを調整 */
+    grid-template-columns: repeat(5, 60px);
+    padding: 10px;
+    border: 12px solid #000;
+    margin: 0;
   }
 
   .bingo-cell {
-    width: 60px; /* スマートフォン表示時のセルのサイズ */
+    width: 60px;
     height: 60px;
-    border: 1px solid #ccc; /* 枠線を細くして間隔を感じさせない */
+    border: 1px solid #ccc;
+  }
+
+  .bingo-card-7x7 {
+    grid-template-columns: repeat(7, 1fr);
+    width: calc(100vw - 40px);
+    box-sizing: border-box;
+  }
+
+  .bingo-cell-7x7 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -79,6 +100,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2000;
 }
 
 .modal-content {
