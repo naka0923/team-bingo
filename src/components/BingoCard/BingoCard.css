@@ -46,6 +46,21 @@
   height: 60px;
 }
 
+@media (min-width: 601px) and (max-width: 1100px) {
+  .bingo-card {
+    grid-template-columns: repeat(5, 60px);
+    padding: 10px;
+    border: 12px solid #000;
+    margin: 0;
+  }
+
+  .bingo-cell {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ccc;
+  }
+}
+
 @media (max-width: 600px) {
   .bingo-card {
     grid-template-columns: repeat(5, 60px);
