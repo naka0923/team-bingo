@@ -148,6 +148,13 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
     setShowSettings(!showSettings);
   };
 
+  const reshuffleLayout = () => {
+    const clickedImages = new Set(selectedImages.filter((_, i) => clicked[i]));
+    const reshuffled = fyShuffle(selectedImages);
+    setSelectedImages(reshuffled);
+    setClicked(reshuffled.map((img) => clickedImages.has(img)));
+  };
+
   return (
     <div className="bingo-container" style={{ borderColor: color }}>
       <div
@@ -156,15 +163,36 @@ function BingoCard2({ color, initialCode, onCodeChange }) {
         トッピング（現在）:{" "}
         {lastAppliedBias?.name ?? (BIASES.find((b) => b.id === biasId)?.name || "なし")}
       </div>
-      <div className={`bingo-card bingo-card-3x3 ${color}`}>
-        {selectedImages.map((image, index) => (
-          <div
-            key={index}
-            className={`bingo-cell bingo-cell-3x3 ${clicked[index] ? "clicked" : ""}`}
-            onClick={() => handleCellClick(index)}
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
-        ))}
+      <div style={{ position: "relative", display: "inline-block" }}>
+        <div className={`bingo-card bingo-card-3x3 ${color}`}>
+          {selectedImages.map((image, index) => (
+            <div
+              key={index}
+              className={`bingo-cell bingo-cell-3x3 ${clicked[index] ? "clicked" : ""}`}
+              onClick={() => handleCellClick(index)}
+              style={{ backgroundImage: `url(${image})` }}
+            ></div>
+          ))}
+        </div>
+        <button
+          onClick={reshuffleLayout}
+          title="並べ替え"
+          style={{
+            position: "absolute",
+            bottom: "4px",
+            right: "4px",
+            padding: "4px 8px",
+            fontSize: "12px",
+            background: "#5c5c5c",
+            border: "none",
+            color: "#ccc",
+            borderRadius: "4px",
+            cursor: "pointer",
+            lineHeight: 1,
+          }}
+        >
+          🔁 並べ替え
+        </button>
       </div>
       <div
         style={{

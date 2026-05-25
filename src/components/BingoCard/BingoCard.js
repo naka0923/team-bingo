@@ -203,17 +203,10 @@ function BingoCard({ color, initialCode, onCodeChange }) {
   };
 
   const reshuffleLayout = () => {
-    // 並びだけ入れ替える
+    const clickedImages = new Set(selectedImages.filter((_, i) => clicked[i]));
     const reshuffled = fyShuffle(selectedImages);
     setSelectedImages(reshuffled);
-
-    // マスのON/OFFは初期化（中央だけON）
-    const nextClicked = Array(25).fill(false);
-    nextClicked[12] = true;
-    setClicked(nextClicked);
-
-    // roomCodeは更新しない
-    // → こうすることで「保存したコードは固定」「並びは遊ぶたびシャッフル」という状態になる
+    setClicked(reshuffled.map((img) => clickedImages.has(img)));
   };
 
   return (
