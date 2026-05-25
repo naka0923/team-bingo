@@ -3,13 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .cards-with-teams {
   display: flex;
   justify-content: center;
-  gap: 200px;
-  flex-wrap: wrap;
+  gap: 40px;
+  flex-wrap: nowrap;
 }
 
 .card-col {
@@ -157,11 +159,15 @@
 @media (min-width: 601px) and (max-width: 1100px) {
   .cards-with-teams {
     gap: 20px;
-    flex-wrap: nowrap;
   }
 }
 
 @media (max-width: 600px) {
+  .cards-with-teams {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
   .team-layout {
     flex-direction: column;
     align-items: center;
@@ -170,5 +176,4 @@
   .member-inputs {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
