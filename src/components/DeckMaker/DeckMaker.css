@@ -125,3 +125,27 @@
 .deck-list-actions button:hover {
   background: #555;
 }
+
+.deck-editing-banner {
+  background: #2a2a00;
+  border: 1px solid #aaaa00;
+  color: #ffff88;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.deck-cancel-button {
+  background: #555 !important;
+  margin-left: 6px;
+}
+
+.deck-cancel-button:hover {
+  background: #777 !important;
+}
+
+.deck-list-item.editing {
+  border-color: #aaaa00;
+  background: #1e1e00;
+}
